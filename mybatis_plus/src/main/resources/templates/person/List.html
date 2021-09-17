@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>输出</title>
+</head>
+<body>
+<div>
+    <table border="1" >
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>age</th>
+            <th>email</th>
+            <th>操作</th>
+        </tr>
+        <tr th:each="person: ${persons}">
+            <td th:text="${person.id}"></td>
+            <td th:text="${person.name}"></td>
+            <td th:text="${person.age}"></td>
+            <td th:text="${person.email}"></td>
+            <td>
+                <!--      把两个数字传给后端去使用          -->
+                <a th:href="@{/deleteUser/{id}(id=${person.id},pn=${page.current})}">删除</a>
+            </td>
+        </tr>
+
+    </table>
+    <div>
+        当前第[[${page.current}]]页 总计 [[${page.pages}]]页 共[[${page.total}]]条记录
+    </div>
+    <div>
+        <ul>
+            <li><a href="#">← 前一页</a></li>
+            <li th:class="${num == page.current?'active':''}" th:each="num:${#numbers.sequence(1,page.pages)}">
+                <a th:href="@{/testPage(pn=${num})}">[[${num}]]</a>
+            </li>
+            <li><a href="#">下一页 → </a></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
