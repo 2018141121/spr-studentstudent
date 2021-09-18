@@ -1,5 +1,6 @@
 package com.codel.mybatis_plus;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.codel.mybatis_plus.mapper.PersonMapper;
 import com.codel.mybatis_plus.pojo.Person;
@@ -46,4 +47,28 @@ class MybatisPlusApplicationTests {
         System.out.println(records);
     }
 
+    @Test
+    void mpTest() {
+//        创建一个条件的wrapper  主要用来创建条件的
+        QueryWrapper<Person> Wrapper = new QueryWrapper<>();
+//        模糊查询
+        QueryWrapper<Person> name = Wrapper.like("name", "345");
+
+        QueryWrapper<Person> objectQueryWrapper = new QueryWrapper<>();
+//        根据id查询
+        QueryWrapper<Person> id = objectQueryWrapper.eq("id", "16");
+        System.out.println(personMapper.selectList(name));
+        System.out.println(personMapper.selectOne(id));
+    }
+
+
+    @Test
+    void pagingTest() {
+        //这是一个分页条件
+        Page<Person> page1 = new Page<>(1, 3);
+//        对perosn进行分页处理
+        Page<Person> page = personService.page(page1, null);
+        List<Person> list = page.getRecords();
+        System.out.println(list);
+    }
 }

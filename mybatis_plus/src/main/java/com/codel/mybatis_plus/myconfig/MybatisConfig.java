@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerIntercept
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+
+//配置分页插件
 @Configuration
 public class MybatisConfig {
 
@@ -19,5 +21,15 @@ public class MybatisConfig {
 
         interceptor.addInnerInterceptor(paginationInnerInterceptor);//这是分页拦截器
         return interceptor;
+
+
     }
+
+//    // 最新版   不需要修改一些条件的，直接使用官方的文档
+//    @Bean
+//    public MybatisPlusInterceptor mybatisPlusInterceptor() {
+//        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
+//        interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.H2));
+//        return interceptor;
+//    }
 }

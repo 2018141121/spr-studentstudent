@@ -7,3 +7,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
 server:
   port: 8081
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
