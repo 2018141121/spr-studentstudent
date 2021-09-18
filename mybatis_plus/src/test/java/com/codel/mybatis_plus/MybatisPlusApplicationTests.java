@@ -68,7 +68,14 @@ class MybatisPlusApplicationTests {
         Page<Person> page1 = new Page<>(1, 3);
 //        对perosn进行分页处理
         Page<Person> page = personService.page(page1, null);
+//        查询总数
+        long total = page.getTotal();
+//        查询当前分页总页数
+        long pages = page.getPages();
+//        获取当前页
+        long current = page.getCurrent();
         List<Person> list = page.getRecords();
-        System.out.println(list);
+        System.out.println("所有数据：" + list);
+        System.out.println("显示当前页：" + current + " 总页数 " + pages + " 页， 总数据 " + total + " 条");
     }
 }
