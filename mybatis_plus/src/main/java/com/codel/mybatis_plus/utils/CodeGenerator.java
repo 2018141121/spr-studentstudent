@@ -46,7 +46,7 @@ public class CodeGenerator {
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
-        gc.setOutputDir(projectPath + "/mybatis_plus/src/main/java");
+        gc.setOutputDir(projectPath + "/src/main/java");
         gc.setAuthor("codel");
         gc.setOpen(false);
         mpg.setGlobalConfig(gc);
