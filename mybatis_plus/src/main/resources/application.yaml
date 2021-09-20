@@ -5,9 +5,18 @@ spring:
     password: abcde
     url: jdbc:mysql://localhost:3306/springbootdata
     type: com.alibaba.druid.pool.DruidDataSource
-server:
-  port: 8081
 
+  redis:
+    host: localhost
+    port: 6379
+    password:
+    database: 0
+server:
+  port: 8089
+
+
+#配置日志
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+

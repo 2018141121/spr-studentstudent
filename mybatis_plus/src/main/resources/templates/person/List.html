@@ -6,7 +6,7 @@
 </head>
 <body>
 <div>
-    <table border="1" >
+    <table border="1">
         <tr>
             <th>id</th>
             <th>name</th>
@@ -27,27 +27,28 @@
 
     </table>
     <div>
+        <p th:text="${session}">
+
+        </p>
+    </div>
+    <div>
         当前第[[${page.current}]]页 总计 [[${page.pages}]]页 共[[${page.total}]]条记录
     </div>
     <div>
         <ul>
-            <li><a href="#">← 前一页</a></li>
+            <li>
+            <a th:href="@{/testPage(pn=${page.current}-1)}">前一页</a></li>
             <li th:class="${num == page.current?'active':''}" th:each="num:${#numbers.sequence(1,page.pages)}">
                 <a th:href="@{/testPage(pn=${num})}">[[${num}]]</a>
+
             </li>
-            <li><a href="#">下一页 → </a></li>
+            <li>
+                <a th:href="@{/testPage(pn=${page.current}+1)}">后一页</a></li>
+
         </ul>
     </div>
 </div>
 </body>
 </html>
 
-Total 490 (delta 48), reused 0 (delta 0), pack-reused 0
-remote: Resolving deltas: 100% (48/48), done.
-remote:
-remote: Create a pull request for 'master' on GitHub by visiting:
-remote:      https://github.com/2018141121/spr-studentstudent/pull/new/master
-remote:
-To https://github.com/2018141121/spr-studentstudent
-* [new branch]      master -> master
-Branch 'master' set up to track remote branch 'master' from 'origin'.
+

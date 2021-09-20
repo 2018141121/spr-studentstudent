@@ -46,7 +46,7 @@ public class CodeGenerator {
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
-        gc.setOutputDir(projectPath + "/src/main/java");
+        gc.setOutputDir(projectPath + "/mybatis_plus/src/main/java");
         gc.setAuthor("codel");
         gc.setOpen(false);
         mpg.setGlobalConfig(gc);
@@ -88,7 +88,7 @@ public class CodeGenerator {
             @Override
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输入文件名称
-                return projectPath + "/mapper/src/main/resources/mapper/" + pc.getModuleName()
+                return projectPath + "/mybatis_plus/src/main/resources/mapper/" + pc.getModuleName()
                         + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
             }
         });
@@ -103,7 +103,7 @@ public class CodeGenerator {
 //        strategy.setSuperEntityClass("com.baomidou.mybatisplus.samples.generator.common.BaseEntity");
         strategy.setEntityLombokModel(true);
 //        strategy.setSuperControllerClass("com.baomidou.mybatisplus.samples.generator.common.BaseController");
-        strategy.setInclude(scanner("表名"));
+        strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
         strategy.setSuperEntityColumns("id");
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(pc.getModuleName() + "_");

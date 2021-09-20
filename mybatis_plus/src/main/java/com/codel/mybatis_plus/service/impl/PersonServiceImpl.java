@@ -19,4 +19,8 @@ public class PersonServiceImpl extends ServiceImpl<PersonMapper, Person> impleme
         return personMapper.getPersonAll();
     }
 
+    public void select(){
+
+    }
+
    }

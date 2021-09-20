@@ -22,8 +22,12 @@ class JpaApplicationTests {
     }
 
     @Test
-    User print() {
-        return user;
-    }
+   void testContextLoads(){
+        Optional<User> byId = userRepository.findById(18);
+        if (byId.isPresent()){
+            User user = byId.get();
+            System.out.println(user);
+        }
 
+    }
 }

@@ -3,9 +3,8 @@ package com.codel.mybatis.controller;
 import com.codel.mybatis.mapper.UserMapper;
 import com.codel.mybatis.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,7 +29,37 @@ public class TestController {
     }
 
     @GetMapping("/getUserById/{id}")
-    public User getUserById( @PathVariable("id") Integer id) {
+    public User getUserById(@PathVariable("id") Integer id) {
         return userMapper.getUserById(id);
+    }
+
+    @GetMapping("/delUser")
+    public String deleteUserById(int id, Model model) {
+        int i = userMapper.deleteById(id);
+        if (i > 0) {
+            model.addAttribute("msg", "success");
+            return "success";
+        }
+        return "false";
+
+
+    }
+
+    @PostMapping("/insertUser")
+    public String insertUser(@RequestBody User user) {
+        int i = userMapper.insertUser(user);
+        if (i > 0) {
+            return "success";
+        }
+        return "false";
+    }
+
+    @PostMapping("/updateUser")
+    public String updateUser(@RequestBody User user) {
+        int i = userMapper.updateUser(user);
+        if (i > 0) {
+            return "success";
+        }
+        return "false";
     }
 }

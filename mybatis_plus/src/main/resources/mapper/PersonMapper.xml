@@ -14,5 +14,14 @@
         FROM person
         WHERE state = #{state}
     </select>
+    <select id="getPersonListByLikeName" resultType="com.codel.mybatis_plus.pojo.Person">
+        <bind name="like" value="'%'+name+'%'"/>
+        <bind name="like2" value="name+'__'"/>
+        select * from person where name like #{like2};
+    </select>
+    <select id="list" resultType="com.codel.mybatis_plus.pojo.Person">
+        select *
+        from springbootdata.person;
+    </select>
 
 </mapper>

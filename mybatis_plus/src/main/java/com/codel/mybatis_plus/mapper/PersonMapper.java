@@ -22,6 +22,9 @@ public interface PersonMapper extends BaseMapper<Person> {
      */
     List<Person> getPersonAll();
 
+    //    @Select("select * from person where name =%#{name}%")
+    List<Person> getPersonListByLikeName(String name);
+
 
 }
 
