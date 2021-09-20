@@ -1,10 +1,10 @@
 package com.codel.mybatis_plus;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@MapperScan("com.codel.mybatis_plus.mapper")  //这个配置是启动就会去找这个地址的配置文件自动的装配进去容器里面
+//@MapperScan("com.codel.mybatis_plus.mapper")
+// 这个配置是启动就会去找这个地址的配置文件自动的装配进去容器里面
 @SpringBootApplication
 public class MybatisPlusApplication {
 

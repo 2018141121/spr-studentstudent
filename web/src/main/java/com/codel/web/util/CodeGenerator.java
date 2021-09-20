@@ -1,4 +1,4 @@
-package com.codel.mybatis_plus.utils;
+package com.codel.web.util;
 
 import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
@@ -46,7 +46,7 @@ public class CodeGenerator {
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
-        gc.setOutputDir(projectPath +"/mybatis_plus/src/main/java");
+        gc.setOutputDir(projectPath + "/src/main/java");
         gc.setAuthor("codel");
         gc.setOpen(false);
         mpg.setGlobalConfig(gc);
@@ -63,8 +63,8 @@ public class CodeGenerator {
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setModuleName(scanner("模块名"));
-//        包的位置
-        pc.setParent("com.codel.mybatis_plus");
+//        包的位置   [要修改]
+        pc.setParent("com.codel.web");
         mpg.setPackageInfo(pc);
 
         // 自定义配置
@@ -88,7 +88,7 @@ public class CodeGenerator {
             @Override
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输入文件名称
-                return projectPath + "/mybatis_plus/src/main/resources/mapper/" + pc.getModuleName()
+                return projectPath + "/mapper/src/main/resources/mapper/" + pc.getModuleName()
                         + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
             }
         });
@@ -113,4 +113,5 @@ public class CodeGenerator {
         mpg.execute();
     }
 }
+
 
